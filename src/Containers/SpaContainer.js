@@ -1,15 +1,33 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-// import "./App.css";
-
+import {
+  getGalleryPage,
+  getAboutPage,
+  getPackagePage,
+  getTemplatePage,
+} from "../api";
+import {
+  CircularProgress,
+  Container,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import AboutPage from "./AboutPage";
 import PackagesPage from "./PackagesPage";
 import GalleryPage from "./PhotoGallery";
 
 import VerticalSpacer from "../Components/VerticalSpacer";
 import TemplatePage from "./TemplatePage";
+
+import {
+  AboutPageContext,
+  PackagePageContext,
+  SiteContext,
+  GalleryPageContext,
+  TemplatePageContext,
+} from "../Context/SiteContext";
 
 const useStyles = makeStyles((theme) => ({
   anchorContainer: {
@@ -25,18 +43,21 @@ const useStyles = makeStyles((theme) => ({
 
 const SpaContainer = (props) => {
   const [currentPage, setCurrentPage] = useState(null);
+  const [aboutPage] = useContext(AboutPageContext);
+  const [templatePage, templates] = useContext(TemplatePageContext);
+  const [packagePage, packages] = useContext(PackagePageContext);
+  const [galleryPage, galleryImages] = useContext(GalleryPageContext);
+  const [loadStateData] = useContext(SiteContext);
+
   const classes = useStyles();
   let packageRef = null;
   let galleryRef = null;
   let aboutRef = null;
   let templatePageRef = null;
 
-  console.log("ROUTE PROPS", props);
-
   //Listens to when route changes within the component
   useEffect(() => {
     let location = props.history.location.pathname;
-    console.log("1st USE EFFECT", location);
     if (props.history.location.pathname === "/about") {
       setCurrentPage(aboutRef);
     }
@@ -53,8 +74,6 @@ const SpaContainer = (props) => {
   }, [props.history.location.pathname, props.history, props]);
 
   useEffect(() => {
-    console.log("2ND USE EFFECT", currentPage);
-
     if (currentPage) {
       currentPage.scrollIntoView({
         behavior: "smooth",
@@ -62,6 +81,47 @@ const SpaContainer = (props) => {
       });
     }
   }, [currentPage]);
+
+  useEffect(() => {
+    if (!aboutPage) {
+      getAboutPage()
+        .then((data) => loadStateData("ABOUT_PAGE", data))
+        .catch((err) => console.log("ERROR LOADING ABOUT PAGE", err));
+    }
+    if (!templatePage) {
+      getTemplatePage().then((data) => loadStateData("TEMPLATE_PAGE", data));
+    }
+    if (!packagePage) {
+      getPackagePage()
+        .then((data) => loadStateData("PACKAGE_PRICING_PAGE", data))
+        .catch((error) => console.log("ERROR"));
+    }
+    if (!galleryPage) {
+      getGalleryPage().then((data) => loadStateData("GALLERY_PAGE", data));
+    }
+  }, []);
+
+  if (!aboutPage) {
+    return (
+      <Container
+        maxWidth="md"
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4">Loading...</Typography>
+        <CircularProgress
+          style={{ marginTop: 25 }}
+          color="primary"
+          size={100}
+        />
+      </Container>
+    );
+  }
 
   return (
     <Fragment>

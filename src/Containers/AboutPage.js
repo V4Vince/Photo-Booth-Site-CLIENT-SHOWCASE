@@ -2,7 +2,7 @@
 import React, { useEffect, useContext, Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { getAboutPage } from "../api";
+// import { getAboutPage } from "../api";
 
 import Paragraph from "../Components/Paragraph";
 import { Typography, Fade, Container } from "@material-ui/core";
@@ -19,15 +19,6 @@ function AboutPage() {
   const classes = useStyles();
 
   const [aboutPage] = useContext(AboutPageContext);
-  const [loadStateData] = useContext(SiteContext);
-
-  useEffect(() => {
-    if (!aboutPage) {
-      getAboutPage()
-        .then((data) => loadStateData("ABOUT_PAGE", data))
-        .catch((err) => console.log("ERROR LOADING ABOUT PAGE", err));
-    }
-  }, []);
 
   if (!aboutPage) {
     return null;

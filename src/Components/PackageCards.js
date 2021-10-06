@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
   CardActions,
+  Box,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,12 +15,11 @@ const useStyles = makeStyles((theme) => ({
     // padding: 15,
     width: "100%",
     height: "100%",
-  },
-  container: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
   },
+
   text: {
     marginTop: 10,
     marginBottom: 10,
@@ -51,6 +51,7 @@ function PackageCard({
             <p key={index}>• {item.description}</p>
           ))}
       </CardContent>
+
       <CardContent>
         <Button
           color="secondary"

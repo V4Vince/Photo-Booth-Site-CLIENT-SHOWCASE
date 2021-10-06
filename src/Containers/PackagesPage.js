@@ -28,16 +28,8 @@ function PackagesPage() {
   const { ref, inView, entry } = useInView({
     /* Optional options */
     triggerOnce: true,
-    threshold: 0,
+    threshold: 1,
   });
-
-  useEffect(() => {
-    if (!packagePage) {
-      getPackagePage()
-        .then((data) => loadStateData("PACKAGE_PRICING_PAGE", data))
-        .catch((error) => console.log("ERROR"));
-    }
-  }, []);
 
   useEffect(() => {
     if (!packages.length && inView) {

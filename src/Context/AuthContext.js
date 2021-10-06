@@ -33,15 +33,11 @@ export const AuthProvider = (props) => {
   };
 
   const handleSignOut = () => {
-    localStorage
-      .removeItem("token")
-      .then((data) =>
-        setAuth({
-          ...INITIAL_STATE,
-        })
-      )
-      .then(() => loadStateData("SUCCESS", "Signed out"))
-      .catch((err) => loadStateData("ERROR", "Sign out failed"));
+    localStorage.removeItem("token");
+    setAuth({
+      ...INITIAL_STATE,
+    });
+    loadStateData("SUCCESS", "Signed out");
   };
 
   return (

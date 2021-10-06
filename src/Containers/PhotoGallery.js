@@ -7,7 +7,7 @@ import ImageGrid from "../Components/ImageGrid";
 
 import { GalleryPageContext, SiteContext } from "../Context/SiteContext";
 
-import { getGalleryPage } from "../api";
+// import { getGalleryPage } from "../api";
 import Paragraph from "../Components/Paragraph";
 import VerticalSpacer from "../Components/VerticalSpacer";
 
@@ -20,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
 function PhotoGallery() {
   const classes = useStyles();
   const [galleryPage, galleryImages] = useContext(GalleryPageContext);
-  const [loadStateData] = useContext(SiteContext);
+  // const [loadStateData] = useContext(SiteContext);
 
-  useEffect(() => {
-    if (!galleryPage) {
-      getGalleryPage().then((data) => loadStateData("GALLERY_PAGE", data));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!galleryPage) {
+  //     getGalleryPage().then((data) => loadStateData("GALLERY_PAGE", data));
+  //   }
+  // }, []);
 
   return (
     <Container maxWidth="md">

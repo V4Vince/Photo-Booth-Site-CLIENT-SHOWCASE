@@ -13,10 +13,12 @@ const TemplateCard = ({ template, adminView, handleDeleteTemplate }) => {
     <Card style={{ width: "100%", position: "relative" }}>
       <Box
         style={{
-          height: "250px",
+          // display: "block",
+          // backgroundColor: "red",
+          height: "200px",
           width: "100%",
           background: `url(${template.image_url})`,
-          backgroundSize: "cover",
+          backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}

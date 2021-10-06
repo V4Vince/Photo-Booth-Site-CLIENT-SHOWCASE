@@ -35,6 +35,11 @@ function App() {
         <div className={classes.contentContainer}>
           <Switch>
             <Route
+              exact
+              path={"/"}
+              render={(props) => <SpaContainer {...props} />}
+            />
+            <Route
               path={["/about", "/pricing", "/gallery", "/templates"]}
               render={(props) => <SpaContainer {...props} />}
             />
