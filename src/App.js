@@ -40,24 +40,16 @@ function App() {
             />
 
             <Route path="/all-templates">
-              <ScrollToTop>
-                <AllTemplatesPage />
-              </ScrollToTop>
+              <AllTemplatesPage />
             </Route>
             <Route path="/request-booking">
-              <ScrollToTop>
-                <RequestBookingPage />
-              </ScrollToTop>
+              <RequestBookingPage />
             </Route>
             <Route path="/request-booking_success">
-              <ScrollToTop>
-                <BookingRequestComplete />
-              </ScrollToTop>
+              <BookingRequestComplete />
             </Route>
             <Route path="/admin">
-              <ScrollToTop>
-                <AdminPage />
-              </ScrollToTop>
+              <AdminPage />
             </Route>
           </Switch>
         </div>

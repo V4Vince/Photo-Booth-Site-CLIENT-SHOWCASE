@@ -24,6 +24,8 @@ function AllTemplatesPage() {
   const [templatePage, templates] = useContext(TemplatePageContext);
   const [loadStateData] = useContext(SiteContext);
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   useEffect(() => {
     if (!templatePage) {
       getTemplatePage().then((data) => loadStateData("TEMPLATE_PAGE", data));

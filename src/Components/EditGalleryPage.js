@@ -41,7 +41,10 @@ const EditGalleryPageForm = ({ submitForm }) => {
     uploadGalleryImages(data)
       .then((payload) => loadStateData("CREATE_GALLERY_IMAGES", payload))
       .then(() => loadStateData("SUCCESS", "Uploading success!"))
-      .catch((err) => loadStateData("ERROR", "Error uploading"));
+      .catch((err) => {
+        console.log("ERROR UPLOADING", err);
+        loadStateData("ERROR", "Error uploading");
+      });
   };
 
   const handleGalleryUpdate = () => {

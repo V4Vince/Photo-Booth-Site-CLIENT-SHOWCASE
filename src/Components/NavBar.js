@@ -38,7 +38,6 @@ const NavBar = ({ handleScrollTransition }) => {
               <img
                 style={{ height: "50px", marginTop: 5 }}
                 onClick={() => history.push("/")}
-                src={logo}
               />
             </div>
           </Hidden>
@@ -49,7 +48,7 @@ const NavBar = ({ handleScrollTransition }) => {
                 flex: 1,
               }}
             >
-              <img style={{ height: "50px", marginTop: 5 }} src={logo} />
+              <img style={{ height: "50px", marginTop: 5 }} />
             </div>
           </Hidden>
 

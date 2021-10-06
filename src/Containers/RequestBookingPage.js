@@ -21,6 +21,8 @@ function RequestBookingPage() {
   const [packagePage, packages] = useContext(PackagePageContext);
   const [loadStateData] = useContext(SiteContext);
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   useEffect(() => {
     if (!packages.length) {
       getPricingPackages()

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -24,65 +24,67 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SpaContainer = (props) => {
+  const [currentPage, setCurrentPage] = useState(null);
   const classes = useStyles();
   let packageRef = null;
   let galleryRef = null;
   let aboutRef = null;
   let templatePageRef = null;
 
+  console.log("ROUTE PROPS", props);
+
   //Listens to when route changes within the component
   useEffect(() => {
-    if (props.match.path === "/about") {
-      aboutRef.scrollIntoView({
+    let location = props.history.location.pathname;
+    console.log("1st USE EFFECT", location);
+    if (props.history.location.pathname === "/about") {
+      setCurrentPage(aboutRef);
+    }
+    if (props.history.location.pathname === "/templates") {
+      setCurrentPage(templatePageRef);
+    }
+    if (props.history.location.pathname === "/pricing") {
+      setCurrentPage(packageRef);
+    }
+    if (props.history.location.pathname === "/gallery") {
+      setCurrentPage(galleryRef);
+    }
+    // console.log("ANY LISTENERS?", listener);
+  }, [props.history.location.pathname, props.history, props]);
+
+  useEffect(() => {
+    console.log("2ND USE EFFECT", currentPage);
+
+    if (currentPage) {
+      currentPage.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
     }
-    if (props.match.path === "/templates") {
-      templatePageRef.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-    if (props.match.path === "/pricing") {
-      packageRef.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-    if (props.match.path === "/gallery") {
-      galleryRef.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }, [props.match.path]);
+  }, [currentPage]);
 
   return (
     <Fragment>
       <div
         className={classes.anchorContainer}
-        ref={(ref) => {
-          aboutRef = ref;
-        }}
+        id="about_page"
+        ref={(ref) => (aboutRef = ref)}
       ></div>
       <VerticalSpacer top={1} bottom={100} showBackgroundColor>
         <AboutPage />
       </VerticalSpacer>
       <div
         className={classes.anchorContainer}
-        ref={(ref) => {
-          templatePageRef = ref;
-        }}
+        id="template_page"
+        ref={(ref) => (templatePageRef = ref)}
       ></div>
       <VerticalSpacer top={50} bottom={100}>
         <TemplatePage />
       </VerticalSpacer>
       <div
         className={classes.anchorContainer}
-        ref={(ref) => {
-          packageRef = ref;
-        }}
+        id="package_page"
+        ref={(ref) => (packageRef = ref)}
       ></div>
       <VerticalSpacer top={50} bottom={100} showBackgroundColor>
         <PackagesPage />
@@ -90,9 +92,8 @@ const SpaContainer = (props) => {
 
       <div
         className={classes.anchorContainer}
-        ref={(ref) => {
-          galleryRef = ref;
-        }}
+        id="gallery_page"
+        ref={(ref) => (galleryRef = ref)}
       ></div>
       <VerticalSpacer top={50} bottom={100}>
         <GalleryPage />

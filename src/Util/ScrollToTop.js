@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 export const ScrollToTop = ({ children }) => {
   const history = useHistory();
   useEffect(() => {
-    return window.scrollTo(0, 0);
+    console.log("SCROLLING TO TOP");
+    window.scrollTo(0, 0);
   }, []);
 
   return <Fragment>{children}</Fragment>;

@@ -2,7 +2,8 @@ import axios from "axios";
 
 // Set config defaults when creating the instance
 const api = axios.create({
-  baseURL: "https://floating-plains-85977.herokuapp.com",
+  baseURL: "http://localhost:4741",
+  // baseURL: "https://floating-plains-85977.herokuapp.com",
 });
 
 api.interceptors.request.use(function (config) {
@@ -48,7 +49,6 @@ export const getBookingInquiries = async (critera) => {
 
 export const getTemplatePage = async () => {
   const response = await api.get("/template_page");
-  console.log("TEMPLATE PAGE", response.data);
   return response.data.template_page;
 };
 
@@ -110,7 +110,7 @@ export const updateGalleryPage = async (gallery) => {
 
 export const updateTemplatePage = async (data) => {
   const response = await api.patch("/template_page", { template_page: data });
-  console.log("TEMPLATE PAGE", response.data.template_page);
+  // console.log("TEMPLATE PAGE", response.data.template_page);
 
   return response.data.template_page;
 };
@@ -166,7 +166,7 @@ export const deleteAllGalleryImages = async () => {
 };
 
 export const signIn = async (credentials) => {
-  console.log("SIGN IN");
+  // console.log("SIGN IN");
   const response = await api.post("/sign-in", { credentials });
   return response.data.user;
 };

@@ -23,7 +23,9 @@ function AboutPage() {
 
   useEffect(() => {
     if (!aboutPage) {
-      getAboutPage().then((data) => loadStateData("ABOUT_PAGE", data));
+      getAboutPage()
+        .then((data) => loadStateData("ABOUT_PAGE", data))
+        .catch((err) => console.log("ERROR LOADING ABOUT PAGE", err));
     }
   }, []);
 
