@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Dang-Its-A-Photobooth-CLIENT/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/Dang-Its-A-Photobooth-CLIENT/static/js/main.31da7fa8.chunk.js",
+    "main.js.map": "/Dang-Its-A-Photobooth-CLIENT/static/js/main.31da7fa8.chunk.js.map",
+    "runtime-main.js": "/Dang-Its-A-Photobooth-CLIENT/static/js/runtime-main.3ce34f5e.js",
+    "runtime-main.js.map": "/Dang-Its-A-Photobooth-CLIENT/static/js/runtime-main.3ce34f5e.js.map",
+    "static/css/2.6ef2fac9.chunk.css": "/Dang-Its-A-Photobooth-CLIENT/static/css/2.6ef2fac9.chunk.css",
+    "static/js/2.ce4cd5ba.chunk.js": "/Dang-Its-A-Photobooth-CLIENT/static/js/2.ce4cd5ba.chunk.js",
+    "static/js/2.ce4cd5ba.chunk.js.map": "/Dang-Its-A-Photobooth-CLIENT/static/js/2.ce4cd5ba.chunk.js.map",
+    "static/js/3.4c491620.chunk.js": "/Dang-Its-A-Photobooth-CLIENT/static/js/3.4c491620.chunk.js",
+    "static/js/3.4c491620.chunk.js.map": "/Dang-Its-A-Photobooth-CLIENT/static/js/3.4c491620.chunk.js.map",
+    "index.html": "/Dang-Its-A-Photobooth-CLIENT/index.html",
+    "static/css/2.6ef2fac9.chunk.css.map": "/Dang-Its-A-Photobooth-CLIENT/static/css/2.6ef2fac9.chunk.css.map",
+    "static/css/main.6dea0f05.chunk.css.map": "/Dang-Its-A-Photobooth-CLIENT/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.ce4cd5ba.chunk.js.LICENSE.txt": "/Dang-Its-A-Photobooth-CLIENT/static/js/2.ce4cd5ba.chunk.js.LICENSE.txt",
+    "static/media/Logo.ef122723.png": "/Dang-Its-A-Photobooth-CLIENT/static/media/Logo.ef122723.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3ce34f5e.js",
+    "static/css/2.6ef2fac9.chunk.css",
+    "static/js/2.ce4cd5ba.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.31da7fa8.chunk.js"
+  ]
+}
