@@ -1,20 +1,21 @@
-Deployed client-side: https://v4vince.github.io/Photo-Booth-Site-CLIENT-SHOWCASE/
+**Deployed client-side:** https://v4vince.github.io/Photo-Booth-Site-CLIENT-SHOWCASE/
 
-Fullstack site with admin controls that allows site owner to update images and info to be displayed to visitors.
+## Fullstack site with admin controls that allows site owner to update images and info to be displayed to visitors.
 
-##Client side:
+## Client side:
   - React.JS
   - Github hosting
-##API:
+## API:
   - Rails
   - PSQL database
   - Google Cloud Storage for image hosting
   - Heroku hosting
 
-Full demo available. 
+## Full demo available: 
+  ### Navigating site as regular visitor:
   - Navigate to live site via https://v4vince.github.io/Photo-Booth-Site-CLIENT-SHOWCASE/
   - Visitors can choose pricing packages and request info in the 'Request Booking' page
-  ###Navigating site as an owner:
+  ### Navigating site as an owner:
   - To view the site as the site owner, scroll down to footer and click on "Random Photobooth Site"
   - You will be navigated to the login screen
   - Use the following credentials: 
