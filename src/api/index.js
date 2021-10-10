@@ -3,7 +3,7 @@ import axios from "axios";
 // Set config defaults when creating the instance
 const api = axios.create({
   // baseURL: "http://localhost:4741",
-  baseURL: "https://floating-plains-85977.herokuapp.com",
+  baseURL: "https://safe-refuge-58259.herokuapp.com",
 });
 
 api.interceptors.request.use(function (config) {
