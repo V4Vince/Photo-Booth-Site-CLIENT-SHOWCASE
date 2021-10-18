@@ -2,8 +2,8 @@ import axios from "axios";
 
 // Set config defaults when creating the instance
 const api = axios.create({
-  // baseURL: "http://localhost:4741",
-  baseURL: "https://safe-refuge-58259.herokuapp.com",
+  baseURL: "http://localhost:4741",
+  // baseURL: "https://floating-plains-85977.herokuapp.com",
 });
 
 api.interceptors.request.use(function (config) {
@@ -29,6 +29,14 @@ export const getPricingPackages = async () => {
   const response = await api.get("/packages");
 
   return response.data.packages;
+};
+
+export const updatePackagePricing = async (packageData) => {
+  const response = await api.put(`/packages/${packageData.id}`, {
+    package: packageData,
+  });
+
+  return response.data.package;
 };
 
 export const getGalleryPage = async () => {
@@ -60,6 +68,12 @@ export const getTemplates = async (frontPageOnly) => {
   });
 
   return response.data.templates;
+};
+
+export const updateTemplate = async (template, id) => {
+  const response = await api.patch(`/templates/${id}`, template);
+
+  return response.data.template;
 };
 
 export const acceptBooking = async (id) => {
