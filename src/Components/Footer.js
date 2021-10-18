@@ -39,7 +39,7 @@ function Footer() {
             cursor: "default",
           }}
         >
-          <span>&copy;</span> Random Photobooth Site · 2021
+          <span>&copy;</span> Dang Its A Photobooth · 2021
         </Typography>
       </Grid>
     </Grid>

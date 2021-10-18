@@ -10,7 +10,12 @@ import PackageCard from "./PackageCards";
 
 import { PackagePageContext, SiteContext } from "../Context/SiteContext";
 
-import { createPackage, deletePackage, getPricingPackages } from "../api";
+import {
+  createPackage,
+  deletePackage,
+  getPricingPackages,
+  updatePackagePricing,
+} from "../api";
 
 const EditPackagePricing = ({ submitForm }) => {
   // const [packages, setPackages] = useState([]);
@@ -34,6 +39,13 @@ const EditPackagePricing = ({ submitForm }) => {
       .then(() => setShowPackageForm(false))
       .then(() => loadStateData("SUCCESS", "Created new package!"))
       .catch((err) => loadStateData("ERROR", "Error creating new package"));
+  };
+
+  const submitPackageUpdate = (formData) => {
+    updatePackagePricing(formData)
+      .then((payload) => loadStateData("UPDATE_PACKAGE", payload))
+      .then(() => loadStateData("SUCCESS", "Package Updated!"))
+      .catch((err) => loadStateData("ERROR", "Error updating package"));
   };
 
   useEffect(() => {
@@ -104,9 +116,9 @@ const EditPackagePricing = ({ submitForm }) => {
                     <DeleteForeverIcon />
                   </IconButton>
                 }
-                price={packageData.price}
-                title={packageData.title}
-                lineItems={packageData.line_items}
+                isEditable
+                packageData={packageData}
+                handleEditSubmit={submitPackageUpdate}
               />
             </Grid>
           ))}

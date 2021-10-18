@@ -40,6 +40,7 @@ function PackagesPage() {
   }, [inView]);
 
   const handlePackageSelect = (packageData) => {
+    console.log("PACKAGE DATA", packageData);
     history.push({
       pathname: "/request-booking",
       state: {
@@ -57,9 +58,7 @@ function PackagesPage() {
       <Zoom key={index} in={inView} timeout={(index + 1) * 500}>
         <Grid item xs={12} md={4}>
           <PackageCard
-            price={packageData.price}
-            title={packageData.title}
-            lineItems={packageData.line_items}
+            packageData={packageData}
             handleSelect={() => handlePackageSelect(packageData)}
           />
         </Grid>

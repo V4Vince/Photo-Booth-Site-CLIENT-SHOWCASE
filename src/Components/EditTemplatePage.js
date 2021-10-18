@@ -21,6 +21,7 @@ import {
   updateTemplatePage,
   createTemplate,
   deleteTemplate,
+  updateTemplate,
 } from "../api";
 
 import { TemplatePageContext, SiteContext } from "../Context/SiteContext";
@@ -29,6 +30,7 @@ const EditTemplatePage = () => {
   const [showNewTemplateForm, setShowNewTemplateForm] = useState(false);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [currentEditForm, setCurrentEditForm] = useState(null);
   const [templatePage, templates] = useContext(TemplatePageContext);
   const [loadStateData] = useContext(SiteContext);
 
@@ -68,11 +70,22 @@ const EditTemplatePage = () => {
   };
 
   const handleCreateTemplate = (templateData) => {
+    // console.log("TEMPLATE", templateData);
+
     createTemplate(templateData)
       .then((payload) => loadStateData("CREATE_TEMPLATE", payload))
       .then(() => setShowNewTemplateForm(false))
       .then(() => loadStateData("SUCCESS", "Created new template!"))
       .catch((err) => loadStateData("ERROR", "Error creating new template"));
+  };
+
+  const handleUpdateTemplate = (template) => {
+    // console.log("TEMPLATE", template);
+    updateTemplate(template, currentEditForm)
+      .then((payload) => loadStateData("UPDATE_TEMPLATE", payload))
+      .then(() => setCurrentEditForm(null))
+      .then(() => loadStateData("SUCCESS", "Updated template!"))
+      .catch((err) => loadStateData("ERROR", "Error updating template"));
   };
 
   const handleDeleteTemplate = (id) => {
@@ -82,15 +95,30 @@ const EditTemplatePage = () => {
       .catch((err) => loadStateData("ERROR", "Error deleting template"));
   };
 
+  const handleEditClick = (id) => setCurrentEditForm(id);
+
   const renderTemplates = () => {
     return templates.map((template) => (
-      <Grid item xs={12} md={4} key={template.id}>
-        <TemplateCard
-          template={template}
-          adminView
-          handleDeleteTemplate={handleDeleteTemplate}
-        />
-      </Grid>
+      <Fragment key={template.id}>
+        <Grid item xs={12} md={4} key={template.id}>
+          {template.id === currentEditForm ? (
+            <NewTemplateForm
+              isEditing
+              templateData={template}
+              closeForm={() => setCurrentEditForm(null)}
+              handleCreateTemplate={handleCreateTemplate}
+              handleUpdateTemplate={handleUpdateTemplate}
+            />
+          ) : (
+            <TemplateCard
+              template={template}
+              adminView
+              handleDeleteTemplate={handleDeleteTemplate}
+              handleEditClick={handleEditClick}
+            />
+          )}
+        </Grid>
+      </Fragment>
     ));
   };
 

@@ -25,42 +25,49 @@ const SignInForm = ({ submitForm }) => {
     <Grid container justifyContent="center">
       <Grid item xs={12} md={6}>
         <Card>
-          <CardContent>
-            <Typography variant="h5">Sign In</Typography>
-            <Divider />
-            <Container maxWidth="sm">
-              <VerticalSpacer bottom={1}>
-                <TextField
-                  fullWidth
-                  label="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </VerticalSpacer>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+          >
+            <CardContent>
+              <Typography variant="h5">Sign In</Typography>
+              <Divider />
+              <Container maxWidth="sm">
+                <VerticalSpacer bottom={1}>
+                  <TextField
+                    fullWidth
+                    label="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </VerticalSpacer>
 
-              <VerticalSpacer>
-                <TextField
-                  fullWidth
-                  label="Password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </VerticalSpacer>
-            </Container>
-          </CardContent>
-          <CardActions>
-            <Button
-              onClick={handleSubmit}
-              type="submit"
-              fullWidth
-              size="large"
-              variant="contained"
-              color="primary"
-            >
-              Sign In
-            </Button>
-          </CardActions>
+                <VerticalSpacer>
+                  <TextField
+                    fullWidth
+                    label="Password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </VerticalSpacer>
+              </Container>
+            </CardContent>
+            <CardActions>
+              <Button
+                onClick={handleSubmit}
+                type="submit"
+                fullWidth
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                Sign In
+              </Button>
+            </CardActions>
+          </form>
         </Card>
       </Grid>
     </Grid>

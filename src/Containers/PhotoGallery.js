@@ -1,7 +1,12 @@
 // import './App.css';
 import { makeStyles } from "@material-ui/core/styles";
 import { useContext, useEffect } from "react";
-import { Container, Fade, Typography } from "@material-ui/core";
+import {
+  Container,
+  Fade,
+  Typography,
+  CircularProgress,
+} from "@material-ui/core";
 
 import ImageGrid from "../Components/ImageGrid";
 
@@ -29,7 +34,7 @@ function PhotoGallery() {
   // }, []);
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       {galleryPage && (
         <Fade in timeout={1000}>
           <div>
@@ -41,6 +46,7 @@ function PhotoGallery() {
         </Fade>
       )}
       <VerticalSpacer top={50} />
+
       <ImageGrid images={galleryImages} />
     </Container>
   );

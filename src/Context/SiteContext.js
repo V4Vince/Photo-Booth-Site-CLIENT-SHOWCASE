@@ -36,6 +36,10 @@ export const SiteProvider = ({ children }) => {
         return setPackages(payload);
       case "CREATE_PACKAGE":
         return setPackages([...packages].concat(payload));
+      case "UPDATE_PACKAGE":
+        const stalePackage = packages.findIndex((el) => el.id === payload.id);
+        packages[stalePackage] = payload;
+        return setPackages([...packages]);
       case "DELETE_PACKAGE":
         //the payload here is just the ID of the deleted record
         return setPackages([...packages.filter((item) => item.id !== payload)]);
@@ -66,6 +70,12 @@ export const SiteProvider = ({ children }) => {
         return setTemplatePage(payload);
       case "TEMPLATES":
         return setTemplates(payload);
+      case "UPDATE_TEMPLATE":
+        const templateToBeUpdated = templates.findIndex(
+          (el) => el.id === payload.id
+        );
+        templates[templateToBeUpdated] = payload;
+        return setTemplates([...templates]);
       case "CREATE_TEMPLATE":
         return setTemplates([...templates].concat(payload));
       case "DELETE_TEMPLATE":

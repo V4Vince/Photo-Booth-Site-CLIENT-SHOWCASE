@@ -53,7 +53,7 @@ const BookingForm = ({
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [eventType, setEventType] = useState("");
-  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState({});
 
   useEffect(() => {
     if (location.state) {
@@ -65,9 +65,10 @@ const BookingForm = ({
     return packages.map((packageData, index) => (
       <Grid key={index} item xs={12} md={4}>
         <PackageCard
-          price={packageData.price}
-          title={packageData.title}
-          lineItems={packageData.line_items}
+          // price={packageData.price}
+          // title={packageData.title}
+          // lineItems={packageData.line_items}
+          packageData={packageData}
           handleSelect={() => setSelectedPackage({ ...packageData })}
         />
       </Grid>
@@ -117,11 +118,7 @@ const BookingForm = ({
     return (
       <Fragment>
         <Grid item xs={12} md={6} className={classes.selectedPackage}>
-          <PackageCard
-            price={selectedPackage.price}
-            title={selectedPackage.title}
-            lineItems={selectedPackage.line_items}
-          />
+          <PackageCard packageData={selectedPackage} />
         </Grid>
         <Grid item xs={12} md={6}>
           <div className={classes.selectedPackageButtonContainer}>

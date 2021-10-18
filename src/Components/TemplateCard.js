@@ -6,23 +6,18 @@ import {
   Button,
   Chip,
   Box,
+  CardMedia,
 } from "@material-ui/core";
 
-const TemplateCard = ({ template, adminView, handleDeleteTemplate }) => {
+const TemplateCard = ({
+  template,
+  adminView,
+  handleDeleteTemplate,
+  handleEditClick,
+}) => {
   return (
     <Card style={{ width: "100%", position: "relative" }}>
-      <Box
-        style={{
-          // display: "block",
-          // backgroundColor: "red",
-          height: "200px",
-          width: "100%",
-          background: `url(${template.image_url})`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-        }}
-      />
+      <CardMedia image={template.image_url} style={{ height: 200 }} />
       {/* <img style={{ width: "100%" }} src={template.image_url} /> */}
 
       {adminView && template.front_page ? (
@@ -40,13 +35,16 @@ const TemplateCard = ({ template, adminView, handleDeleteTemplate }) => {
         </Typography>
       </CardContent>
       {adminView && (
-        <CardActions>
+        <CardActions style={{ justifyContent: "space-between" }}>
           <Button
             variant="text"
             onClick={() => handleDeleteTemplate(template.id)}
             style={{ color: "red" }}
           >
             Delete
+          </Button>
+          <Button variant="text" onClick={() => handleEditClick(template.id)}>
+            Edit
           </Button>
         </CardActions>
       )}
