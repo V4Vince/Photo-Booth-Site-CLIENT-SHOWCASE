@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // import { getAboutPage } from "../api";
 
 import Paragraph from "../Components/Paragraph";
-import { Typography, Fade, Container } from "@material-ui/core";
+import { Typography, Fade, Container, Grid } from "@material-ui/core";
 
 import { AboutPageContext, SiteContext } from "../Context/SiteContext";
 
