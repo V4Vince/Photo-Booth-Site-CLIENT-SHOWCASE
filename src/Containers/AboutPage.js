@@ -27,12 +27,12 @@ function AboutPage() {
   return (
     <Fragment>
       <Fade in timeout={1000}>
-        <div>
+        <div style={{ width: "100%", backgroundColor: "white" }}>
           <img
             style={{
               display: "block",
-              width: "100%",
-              // height: "250px",
+              // width: "100%",
+              height: "100vh",
               // maxWidth: "500px",
               margin: "auto",
             }}
