@@ -27,19 +27,26 @@ function AboutPage() {
   return (
     <Fragment>
       <Fade in timeout={1000}>
-        <div style={{ width: "100%", backgroundColor: "white" }}>
-          <img
-            style={{
-              display: "block",
-              // width: "100%",
-              height: "100vh",
-              // maxWidth: "500px",
-              margin: "auto",
-            }}
-            src={aboutPage.url}
-            alt={"about image"}
-          />
-        </div>
+        <Grid
+          container
+          justifyContent="center"
+          style={{ width: "100%", backgroundColor: "white" }}
+        >
+          <Grid item xs={12} md={10} lg={8} style={{}}>
+            <img
+              style={{
+                // display: "block",
+                // maxWidth: "100vw",
+                objectFit: "cover",
+                height: "100vh",
+                width: "100%",
+                margin: 0,
+              }}
+              src={aboutPage.url}
+              alt={"about image"}
+            />
+          </Grid>
+        </Grid>
       </Fade>
 
       <Container maxWidth="md">
