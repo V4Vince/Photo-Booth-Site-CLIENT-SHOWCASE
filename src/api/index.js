@@ -2,7 +2,9 @@ import axios from "axios";
 
 // Set config defaults when creating the instance
 const api = axios.create({
-  baseURL: "http://localhost:4741",
+  // baseURL: "http://localhost:4741",
+  baseURL: "https://safe-refuge-58259.herokuapp.com",
+
   // baseURL: "https://floating-plains-85977.herokuapp.com",
 });
 
