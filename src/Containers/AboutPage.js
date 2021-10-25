@@ -37,7 +37,7 @@ function AboutPage() {
               style={{
                 // display: "block",
                 // maxWidth: "100vw",
-                objectFit: "cover",
+                objectFit: "contain",
                 height: "100vh",
                 width: "100%",
                 margin: 0,
